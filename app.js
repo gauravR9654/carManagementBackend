@@ -4,6 +4,8 @@ const carsRouter = require('./routes/createCars/index'); // Import the cars rout
 const authRoutes = require('./routes/LoginSign/auth')
 const searchQuery = require('./routes/searchQuery/searchQuery')
 const connectDB = require('./config/db');
+require('dotenv').config();
+
 const cors = require('cors');
 const app = express(); // Initialize express
 
@@ -19,7 +21,7 @@ app.use('/cars', authRoutes);
 app.use('/cars', searchQuery);
 
 // Define the server port
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
